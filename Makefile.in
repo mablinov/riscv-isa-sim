@@ -60,6 +60,8 @@ install_hdrs_dir := $(INSTALLDIR)/include
 install_libs_dir := $(INSTALLDIR)/lib
 install_exes_dir := $(INSTALLDIR)/bin
 
+pk_search_path := $(install_exes_dir)
+
 #-------------------------------------------------------------------------
 # List of subprojects
 #-------------------------------------------------------------------------
@@ -80,9 +82,9 @@ VPATH := $(addprefix $(src_dir)/, $(sprojs_enabled))
 
 CC            := @CC@
 CXX           := @CXX@
-CFLAGS        += @CFLAGS@ -DPREFIX=\"$(prefix)\"
+CFLAGS        += @CFLAGS@ -DPREFIX=\"$(prefix)\" -DPK_SEARCH_PATH=\"$(pk_search_path)\"
 CPPFLAGS      += @CPPFLAGS@
-CXXFLAGS      += @CXXFLAGS@ -DPREFIX=\"$(prefix)\"
+CXXFLAGS      += @CXXFLAGS@ -DPREFIX=\"$(prefix)\" -DPK_SEARCH_PATH=\"$(pk_search_path)\"
 COMPILE       := $(CXX) -MMD -MP $(CPPFLAGS) $(CXXFLAGS) \
                  $(sprojs_include)
 COMPILE_C     := $(CC) -MMD -MP $(CPPFLAGS) $(CFLAGS) \

@@ -89,7 +89,7 @@ void htif_t::load_program()
     path = targs[0];
   else if (targs[0].find('/') == std::string::npos)
   {
-    std::string test_path = PREFIX TARGET_DIR + targs[0];
+    std::string test_path = PK_SEARCH_PATH "/" + targs[0];
     if (access(test_path.c_str(), F_OK) == 0)
       path = test_path;
   }
